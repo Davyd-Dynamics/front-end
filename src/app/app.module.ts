@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from "./@core/core.module";
 import {PatientsModule} from "./modules/patients/patients.module";
+import {MatIconModule} from "@angular/material/icon";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -22,6 +23,7 @@ export function tokenGetter() {
     CoreModule,
     PatientsModule,
     BrowserAnimationsModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

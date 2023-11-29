@@ -11,8 +11,11 @@ export class PatientService {
 
   constructor(private http: HttpClient) {}
 
-  getAllPatients(filter: any): Observable<Patient[]> {
-    const params = new HttpParams().set('filter', JSON.stringify(filter));
+  getAllPatients(pageNumber: number = 1, pageSize: number = 10): Observable<Patient[]> {
+    const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+
     return this.http.get<Patient[]>(this.apiUrl, { params });
   }
 

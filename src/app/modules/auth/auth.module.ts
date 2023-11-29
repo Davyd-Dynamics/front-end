@@ -19,11 +19,11 @@ import {HttpClientModule} from "@angular/common/http";
     CommonModule,
     AuthRoutingModule,
     MatFormFieldModule,
-    MatIconModule,
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class AuthModule { }
