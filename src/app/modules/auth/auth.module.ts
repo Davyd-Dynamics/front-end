@@ -8,6 +8,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatButtonModule
   ]

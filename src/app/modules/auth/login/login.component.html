@@ -2,7 +2,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
     <mat-form-field>
       <mat-label>Enter your email</mat-label>
-      <input matInput formControlName="email" placeholder="pat@example.com">
+      <input matInput formControlName="email">
       <mat-error *ngIf="loginForm.get('email')?.invalid">{{ getErrorMessage('email') }}</mat-error>
     </mat-form-field>
 
