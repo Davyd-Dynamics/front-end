@@ -1,0 +1,5 @@
+<div *ngIf="isLoading">Loading...</div>
+<div *ngIf="patient">
+  <h2>{{ patient.contact.firstName }}</h2>
+  <p>ID: {{ patient.id }}</p>
+</div>

@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CoreModule} from "./@core/core.module";
+import {PatientsModule} from "./modules/patients/patients.module";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -17,11 +19,13 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
+    PatientsModule,
     BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["example.com"]
+        allowedDomains: ["http://localhost:5000"]
       },
     }),
   ],
