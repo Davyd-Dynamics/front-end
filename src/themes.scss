@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+
+// Шрифт
+$font-family: 'Roboto', sans-serif;
+
+// Визначення палітри
+$custom-primary: mat.define-palette(mat.$blue-palette);
+$custom-accent: mat.define-palette(mat.$green-palette);
+$my-warn: mat.define-palette(mat.$yellow-palette);
+
+// Кастомна тема
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $my-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Застосування теми до всіх компонентів
+@include mat.all-component-themes($custom-theme);
