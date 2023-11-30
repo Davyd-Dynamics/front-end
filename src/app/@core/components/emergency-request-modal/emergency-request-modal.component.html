@@ -1,1 +1,12 @@
-<p>emergency-request-modal works!</p>
+<h1>Emergency Request Details</h1>
+<div>
+  <p><strong>ID:</strong> {{ data.id }}</p>
+  <p><strong>Patient Name:</strong> пацієнт</p>
+  <p><strong>Location:</strong> {{ data.location }}</p>
+  <p><strong>Status:</strong> {{ data.status }}</p>
+
+  <!-- Action buttons -->
+  <button mat-raised-button color="primary" (click)="acceptRequest()">Accept</button>
+  <button mat-raised-button color="warn" (click)="rejectRequest()">Reject</button>
+  <button mat-raised-button (click)="closeDialog()">Close</button>
+</div>

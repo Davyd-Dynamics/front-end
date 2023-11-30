@@ -1,34 +1,32 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EmergencyRequest } from '../../../models/emergency-request';
+import {EmergencyRequestsService} from "../../services/emergency-requests.service";
 
 @Component({
   selector: 'app-emergency-request-modal',
-  template: `
-    <h1>Emergency Request Details</h1>
-    <div>
-      <p><strong>ID:</strong> {{ data.id }}</p>
-      <p><strong>Patient Name:</strong> пацієнт</p>
-      <p><strong>Location:</strong> {{ data.location }}</p>
-      <p><strong>Status:</strong> {{ data.status }}</p>
-
-      <!-- Action buttons -->
-      <button mat-raised-button color="primary" (click)="acceptRequest()">Accept</button>
-      <button mat-raised-button color="warn" (click)="rejectRequest()">Reject</button>
-      <button mat-raised-button (click)="closeDialog()">Close</button>
-    </div>
-  `
+  templateUrl: './emergency-request-modal.component.html'
 })
-export class EmergencyRequestModalComponent {
+export class EmergencyRequestModalComponent implements OnInit {
+  data: EmergencyRequest;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: EmergencyRequest,
-    private dialogRef: MatDialogRef<EmergencyRequestModalComponent>
-  ) {}
+    private emergencyRequestsService: EmergencyRequestsService,
+    public dialogRef: MatDialogRef<EmergencyRequestModalComponent>
+  ) {
+    this.data = {} as EmergencyRequest;
+  }
+
+  ngOnInit(): void {
+    this.emergencyRequestsService.emergencyRequest$.subscribe((data: EmergencyRequest) => {
+      this.data = data;
+    });
+  }
 
   acceptRequest() {
     // Logic for accepting the emergency request
-    // You can emit an event, perform an action, or call a service method here
-    // For example: this.emergencyService.acceptEmergencyRequest(this.data.id);
+    // You can call the service method here to handle the acceptance
+    // For example: this.emergencyRequestsService.acceptEmergencyRequest(this.data.id);
   }
 
   rejectRequest() {
