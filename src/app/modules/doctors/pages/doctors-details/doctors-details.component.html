@@ -1,0 +1,37 @@
+<!-- doctor-detail.component.html -->
+<div *ngIf="doctor">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ doctor.contact.firstName }} {{ doctor.contact.lastName }}</mat-card-title>
+      <mat-card-subtitle>Speciality: {{ doctor.speciality }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <strong>Gender:</strong>
+          <span>{{ doctor.contact.gender }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Date of Birth:</strong>
+          <span>{{ doctor.contact.dateOfBirth | date: 'longDate' }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Email:</strong>
+          <span>{{ doctor.contact.email }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Phone:</strong>
+          <span>{{ doctor.contact.phone }}</span>
+        </mat-list-item>
+        <!-- Display other relevant doctor details -->
+      </mat-list>
+    </mat-card-content>
+
+    <!-- You can add more sections or use different Angular Material components to display additional information -->
+
+    <mat-card-actions>
+      <!-- Add any actions or buttons here if needed -->
+    </mat-card-actions>
+  </mat-card>
+</div>
