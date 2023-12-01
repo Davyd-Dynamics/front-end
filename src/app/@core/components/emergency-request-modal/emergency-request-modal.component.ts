@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { EmergencyRequest } from '../../../models/emergency-request';
 import { EmergencyRequestsService } from '../../services/emergency-requests.service';
 
@@ -8,22 +8,15 @@ import { EmergencyRequestsService } from '../../services/emergency-requests.serv
   templateUrl: './emergency-request-modal.component.html'
 })
 export class EmergencyRequestModalComponent implements OnInit {
-  data: EmergencyRequest;
 
   constructor(
-    private emergencyRequestsService: EmergencyRequestsService,
+    @Inject(MAT_DIALOG_DATA) public data:  {emergencyRequest: EmergencyRequest},
     public dialogRef: MatDialogRef<EmergencyRequestModalComponent>,
-    private dialog: MatDialog
-  ) {
-    this.data = {} as EmergencyRequest;
-  }
+  ) {}
 
-  ngOnInit(): void {
-    this.emergencyRequestsService.emergencyRequest$.subscribe((data: EmergencyRequest) => {
-      this.data = data;
-      console.log('hello from modal');
-      // No need for openDialogWithData anymore, remove this line
-    });
+  ngOnInit() {
+    // will log the entire data object
+    console.log(this.data.emergencyRequest)
   }
 
   acceptRequest() {

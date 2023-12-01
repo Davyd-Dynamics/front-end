@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>Emergency Request Details</h1>
-<div mat-dialog-content>
-  <p><strong>ID:</strong> {{ data.id }}</p>
+<div *ngIf="data" mat-dialog-content>
+  <p><strong>ID:</strong> {{ data.emergencyRequest.id }}</p>
   <p><strong>Patient Name:</strong> пацієнт</p>
-  <p><strong>Location:</strong> {{ data.location }}</p>
-  <p><strong>Status:</strong> {{ data.status }}</p>
+  <p><strong>Location:</strong> {{ data.emergencyRequest.location }}</p>
+  <p><strong>Status:</strong> {{ data.emergencyRequest.status }}</p>
 </div>
 <div mat-dialog-actions>
   <!-- Action buttons -->

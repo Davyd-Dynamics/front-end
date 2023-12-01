@@ -29,14 +29,14 @@ export class EmergencyRequestsService {
   public addEmergencyRequestListener = () => {
     this.hubConnection.on('ChangedEmergencyRequest', (message: EmergencyRequest) => {
       console.log('Received message');
-      console.log(message)
       this.openEmergencyRequestDialog(message);
     });
   }
 
-  private openEmergencyRequestDialog(data: EmergencyRequest): void {
+  private openEmergencyRequestDialog(emergencyRequest: EmergencyRequest): void {
+    console.log(emergencyRequest)
     this.dialog.open(EmergencyRequestModalComponent, {
-      data: data,
+      data: { emergencyRequest: emergencyRequest},
       width: '400px',
       // Add more dialog configurations as needed
     });

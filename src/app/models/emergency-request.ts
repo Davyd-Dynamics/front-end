@@ -9,6 +9,6 @@ export interface EmergencyRequest {
   acceptedDoctorId: string;
   acceptedDoctor: Doctor;
   location: string;
-  status: EmergencyRequestStatus;
-  type: EmergencyRequestType;
+  status: string;
+  type: string;
 }
