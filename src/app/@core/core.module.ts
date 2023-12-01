@@ -9,6 +9,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import { AppShellComponent } from './components/app-shell/app-shell.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -27,6 +28,7 @@ import { AppShellComponent } from './components/app-shell/app-shell.component';
     MatToolbarModule,
     RouterLink,
     RouterOutlet,
+    MatDialogModule,
   ],
   exports: [AppShellComponent]
 })

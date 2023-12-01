@@ -1,12 +1,13 @@
-<h1>Emergency Request Details</h1>
-<div>
+<h1 mat-dialog-title>Emergency Request Details</h1>
+<div mat-dialog-content>
   <p><strong>ID:</strong> {{ data.id }}</p>
   <p><strong>Patient Name:</strong> пацієнт</p>
   <p><strong>Location:</strong> {{ data.location }}</p>
   <p><strong>Status:</strong> {{ data.status }}</p>
-
+</div>
+<div mat-dialog-actions>
   <!-- Action buttons -->
-  <button mat-raised-button color="primary" (click)="acceptRequest()">Accept</button>
-  <button mat-raised-button color="warn" (click)="rejectRequest()">Reject</button>
-  <button mat-raised-button (click)="closeDialog()">Close</button>
+  <button mat-button color="primary" (click)="acceptRequest()">Accept</button>
+  <button mat-button color="warn" (click)="rejectRequest()">Reject</button>
+  <button mat-button mat-dialog-close>Close</button>
 </div>

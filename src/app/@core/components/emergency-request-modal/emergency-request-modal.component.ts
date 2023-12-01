@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EmergencyRequest } from '../../../models/emergency-request';
-import {EmergencyRequestsService} from "../../services/emergency-requests.service";
+import { EmergencyRequestsService } from '../../services/emergency-requests.service';
 
 @Component({
   selector: 'app-emergency-request-modal',
@@ -12,7 +12,8 @@ export class EmergencyRequestModalComponent implements OnInit {
 
   constructor(
     private emergencyRequestsService: EmergencyRequestsService,
-    public dialogRef: MatDialogRef<EmergencyRequestModalComponent>
+    public dialogRef: MatDialogRef<EmergencyRequestModalComponent>,
+    private dialog: MatDialog
   ) {
     this.data = {} as EmergencyRequest;
   }
@@ -20,6 +21,8 @@ export class EmergencyRequestModalComponent implements OnInit {
   ngOnInit(): void {
     this.emergencyRequestsService.emergencyRequest$.subscribe((data: EmergencyRequest) => {
       this.data = data;
+      console.log('hello from modal');
+      // No need for openDialogWithData anymore, remove this line
     });
   }
 
