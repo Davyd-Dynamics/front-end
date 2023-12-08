@@ -16,7 +16,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 @NgModule({
   declarations: [
     EmergencyRequestModalComponent,
-    AppShellComponent
+    AppShellComponent,
   ],
   imports: [
     CommonModule,

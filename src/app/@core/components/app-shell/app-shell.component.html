@@ -25,6 +25,12 @@
           <span *ngIf="!isCollapsed">Doctors</span>
         </span>
       </a>
+      <a routerLink="/emergency-requests" mat-list-item>
+        <span class="entry">
+          <mat-icon>error</mat-icon>
+          <span *ngIf="!isCollapsed">Emergency Requests</span>
+        </span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

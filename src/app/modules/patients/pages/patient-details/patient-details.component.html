@@ -1,5 +1,101 @@
-<div *ngIf="isLoading">Loading...</div>
-<div *ngIf="patient">
-  <h2>{{ patient.contact.firstName }}</h2>
-  <p>ID: {{ patient.id }}</p>
+<div>
+  <div *ngIf="isLoading" class="flex items-center justify-center h-screen">
+    <div>Loading...</div>
+  </div>
+
+  <div *ngIf="patient" class="flex items-center justify-center gap-2 h-screen">
+    <div class="max-w-md rounded overflow-hidden shadow-lg border p-6">
+      <h2 class="text-2xl font-bold mb-2">{{ patient.contact.firstName }}</h2>
+
+      <!-- Інформація про контакт -->
+      <div class="mt-4 border-t pt-4">
+        <h3 class="text-xl font-semibold mb-2">Contact Information</h3>
+        <p>First Name: {{ patient.contact.firstName }}</p>
+        <p>Last Name: {{ patient.contact.lastName }}</p>
+        <p>Middle Name: {{ patient.contact.middleName }}</p>
+        <p>Email: {{ patient.contact.email }}</p>
+        <p>Phone: {{ patient.contact.phone }}</p>
+        <p>Date of Birth: {{ patient.contact.dateOfBirth }}</p>
+        <p>Gender: {{ patient.contact.gender }}</p>
+        <p>Address: {{ patient.contact.address }}</p>
+      </div>
+
+      <!-- Інформація про пацієнта -->
+      <div class="mt-4 border-t pt-4">
+        <h3 class="text-xl font-semibold mb-2">Patient Information</h3>
+        <p>Medical Record Number: {{ patient.medicalRecordNumber }}</p>
+        <!-- Додай інші поля пацієнта якщо вони доступні -->
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <div class="ml-4 max-w-md" style="max-height: 500px; overflow-y: auto;">
+        <h3 class="text-xl font-semibold mb-0.5">Emergency Requests</h3>
+        <mat-list>
+          <mat-expansion-panel *ngFor="let request of patient.emergencyRequests">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div>Status: {{ request.status }}</div>
+              </mat-panel-title>
+              <mat-panel-description>
+                <div class="font-semibold">Location: {{ request.location }}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="p-4">
+              <p><strong>Type:</strong> {{ request.type }}</p>
+              <p><strong>ID:</strong> {{ request.id }}</p>
+              <!-- Додай інші поля emergencyRequest якщо вони доступні -->
+            </div>
+          </mat-expansion-panel>
+        </mat-list>
+      </div>
+
+      <div class="ml-4 max-w-md" style="max-height: 500px; overflow-y: auto;">
+        <h3 class="text-xl font-semibold mb-0.5">Diagnoses</h3>
+        <mat-list>
+          <mat-expansion-panel *ngFor="let diagnosis of patient.diagnoses">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div>Diagnosis: {{ diagnosis.name }}</div>
+              </mat-panel-title>
+              <mat-panel-description>
+                <div>Severity Level: {{ diagnosis.severityLevel }}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="p-4">
+              <p><strong>Doctor ID:</strong> {{ diagnosis.doctorId }}</p>
+              <p><strong>Detection Date:</strong> {{ diagnosis.detectionDate | date }}</p>
+              <p><strong>Duration:</strong> {{ diagnosis.duration | date }}</p>
+              <p><strong>Related Factors:</strong> {{ diagnosis.relatedFactors }}</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-list>
+      </div>
+
+      <div class="ml-4 max-w-md" style="max-height: 500px; overflow-y: auto;">
+        <h3 class="text-xl font-semibold mb-0.5">Medical History</h3>
+        <mat-list>
+          <mat-expansion-panel *ngFor="let history of patient.medicalHistories">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div>Disease: {{ history.disease }}</div>
+              </mat-panel-title>
+              <mat-panel-description>
+                <div>ID: {{ history.id }}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="p-4">
+              <p><strong>Treatment:</strong> {{ history.treatment }}</p>
+              <!-- Додай інші поля medical history якщо вони доступні -->
+            </div>
+          </mat-expansion-panel>
+        </mat-list>
+      </div>
+    </div>
+
+
+  </div>
 </div>

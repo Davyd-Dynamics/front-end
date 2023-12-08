@@ -9,6 +9,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {CoreModule} from "../../@core/core.module";
 import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatLineModule} from "@angular/material/core";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import {MatIconModule} from "@angular/material/icon";
     PatientsRoutingModule,
     MatPaginatorModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatLineModule,
+    MatExpansionModule
   ]
 })
 export class PatientsModule { }

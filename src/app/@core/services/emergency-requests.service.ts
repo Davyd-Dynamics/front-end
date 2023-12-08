@@ -4,16 +4,21 @@ import { BehaviorSubject } from 'rxjs';
 import {EmergencyRequest} from "../../models/emergency-request";
 import {EmergencyRequestModalComponent} from "../components/emergency-request-modal/emergency-request-modal.component";
 import {MatDialog} from "@angular/material/dialog";
+import {HttpClient} from "@angular/common/http";
+import {Patient} from "../../models/patient/patient";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmergencyRequestsService {
+  private readonly apiUrl = 'http://localhost:5000/api/v1/emergency-requests';
+
   private hubConnection!: signalR.HubConnection;
   private emergencyRequestSource = new BehaviorSubject<EmergencyRequest>({} as EmergencyRequest);
   emergencyRequest$ = this.emergencyRequestSource.asObservable();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+              private readonly http: HttpClient) {}
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
@@ -31,6 +36,10 @@ export class EmergencyRequestsService {
       console.log('Received message');
       this.openEmergencyRequestDialog(message);
     });
+  }
+
+  public changeEmergencyRequestStatus(emergencyRequestId : string, status : string){
+    return this.http.post(`${this.apiUrl}/${emergencyRequestId}/status`, {emergencyRequestId, status});
   }
 
   private openEmergencyRequestDialog(emergencyRequest: EmergencyRequest): void {
