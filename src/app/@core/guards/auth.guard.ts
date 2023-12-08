@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate  {
     let isRefreshSuccess: boolean;
 
     const refreshRes = await new Promise<AuthenticatedResponse>((resolve, reject) => {
-      this.http.post<AuthenticatedResponse>("https://localhost:5001/api/token/refresh", credentials, {
+      this.http.post<AuthenticatedResponse>("http://localhost:5000/api/v1/auth/refresh", credentials, {
         headers: new HttpHeaders({
           "Content-Type": "application/json"
         })
@@ -48,7 +48,7 @@ export class AuthGuard implements CanActivate  {
 
     const isRefreshSuccess = await this.tryRefreshingTokens(token!);
     if (!isRefreshSuccess) {
-      this.router.navigate(["login"]);
+      this.router.navigate(["auth/login"]);
     }
 
     return isRefreshSuccess;
