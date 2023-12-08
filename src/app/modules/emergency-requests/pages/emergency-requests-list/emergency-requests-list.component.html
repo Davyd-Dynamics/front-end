@@ -1,1 +1,37 @@
-<p>emergency-requests-list works!</p>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="emergencyRequests" class="mat-elevation-z8">
+
+    <!-- Define columns -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="column !== 'actions'; else actionButtons">{{ element[column] }}</ng-container>
+        <ng-template #actionButtons>
+          <button mat-icon-button (click)="openEmergencyRequestDetails(element.id)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Button column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="openEmergencyRequestDetails(element.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Table rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<mat-paginator
+  [length]="totalRecords"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event.pageIndex + 1)"
+></mat-paginator>

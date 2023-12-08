@@ -2,16 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EmergencyRequestsRoutingModule } from './emergency-requests-routing.module';
-import { EmergencyRequestsListComponent } from './pages/emergency-requests-list/emergency-requests-list.component';
+import {EmergencyRequestListComponent} from "./pages/emergency-requests-list/emergency-requests-list.component";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+
 
 
 @NgModule({
   declarations: [
-    EmergencyRequestsListComponent
+    EmergencyRequestListComponent
   ],
   imports: [
     CommonModule,
-    EmergencyRequestsRoutingModule
+    EmergencyRequestsRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class EmergencyRequestsModule { }

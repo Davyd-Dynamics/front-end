@@ -1,4 +1,3 @@
-import {EmergencyRequestStatus, EmergencyRequestType} from ".";
 import {Patient} from "./patient/patient";
 import {Doctor} from "./doctor/doctor";
 

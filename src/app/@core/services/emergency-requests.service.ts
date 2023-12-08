@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import * as signalR from "@microsoft/signalr";
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {EmergencyRequest} from "../../models/emergency-request";
 import {EmergencyRequestModalComponent} from "../components/emergency-request-modal/emergency-request-modal.component";
 import {MatDialog} from "@angular/material/dialog";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Patient} from "../../models/patient/patient";
 
 @Injectable({
@@ -19,6 +19,14 @@ export class EmergencyRequestsService {
 
   constructor(public dialog: MatDialog,
               private readonly http: HttpClient) {}
+
+  getAll(pageNumber: number = 1, pageSize: number = 10): Observable<EmergencyRequest[]> {
+    const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<EmergencyRequest[]>(this.apiUrl, { params });
+  }
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
