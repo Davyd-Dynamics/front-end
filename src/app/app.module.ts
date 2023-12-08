@@ -12,6 +12,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import {JwtInterceptor} from "./@core/interceptors/jwt.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -39,7 +41,13 @@ export function tokenGetter() {
     MatSidenavModule,
     MatListModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
