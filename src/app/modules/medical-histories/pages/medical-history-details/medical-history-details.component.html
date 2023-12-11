@@ -1,0 +1,30 @@
+<div *ngIf="medicalHistory" class="details-container bg-gray-100 min-h-screen py-12 px-4">
+  <h2 class="text-3xl font-bold mb-8 text-center">Medical History Details</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <!-- Patient Information Card -->
+    <div class="bg-white rounded-lg p-8 shadow-md">
+      <h3 class="text-2xl font-semibold mb-6">Patient Information</h3>
+      <p><strong>Patient ID:</strong> {{ medicalHistory.patient.id }}</p>
+      <p><strong>Patient Name:</strong> {{ medicalHistory.patient.name }}</p>
+      <!-- Other patient details you may want to display -->
+    </div>
+
+    <!-- Medical History Details Card -->
+    <div class="bg-white rounded-lg p-8 shadow-md">
+      <h3 class="text-2xl font-semibold mb-6">Medical History Details</h3>
+      <p><strong>Medical History ID:</strong> {{ medicalHistory.id }}</p>
+      <p><strong>Disease:</strong> {{ medicalHistory.disease }}</p>
+      <p><strong>Treatment:</strong> {{ medicalHistory.treatment }}</p>
+      <!-- Other medical history details you want to display -->
+    </div>
+
+    <!-- Assigned Doctor Information Card -->
+    <div class="bg-white rounded-lg p-8 shadow-md">
+      <h3 class="text-2xl font-semibold mb-6">Assigned Doctor Information</h3>
+      <p><strong>Doctor ID:</strong> {{ medicalHistory.assignedDoctor.id }}</p>
+      <p><strong>Doctor Name:</strong> {{ medicalHistory.assignedDoctor.name }}</p>
+      <!-- Other doctor details you may want to display -->
+    </div>
+  </div>
+</div>

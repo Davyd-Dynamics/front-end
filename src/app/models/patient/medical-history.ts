@@ -1,12 +1,13 @@
 import {Patient} from "./patient";
 import {Doctor} from "../doctor/doctor";
+import {BaseLookupEntity} from "../base-lookup-entity";
 
 export interface MedicalHistory {
   id: string;
   patientId: string;
-  patient: Patient;
   disease: string;
   treatment: string;
   assignedDoctorId: string;
-  assignedDoctor: Doctor;
+  patient: BaseLookupEntity;
+  assignedDoctor: BaseLookupEntity;
 }

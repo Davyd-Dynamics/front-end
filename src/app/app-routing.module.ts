@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'patients', loadChildren: () => import('./modules/patients/patients.module').then(m => m.PatientsModule) },
   { path: 'doctors', loadChildren: () => import('./modules/doctors/doctors.module').then(m => m.DoctorsModule), canActivate: [AuthGuard] },
   { path: 'emergency-requests', loadChildren: () => import('./modules/emergency-requests/emergency-requests.module').then(m => m.EmergencyRequestsModule) },
+  { path: 'medical-histories', loadChildren: () => import('./modules/medical-histories/medical-histories.module').then(m => m.MedicalHistoriesModule) },
 ];
 
 @NgModule({
