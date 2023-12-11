@@ -1,1 +1,41 @@
-<p>profile-details works!</p>
+<div  class="container h-screen mx-auto p-6">
+  <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="p-4">
+      <h1 class="text-3xl font-bold mb-4">Profile Details</h1>
+      <div *ngIf="user$ | async as user" class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-gray-600 font-semibold">First Name:</p>
+          <p class="text-lg">{{ user.firstName }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Last Name:</p>
+          <p class="text-lg">{{ user.lastName }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Email:</p>
+          <p class="text-lg">{{ user.email }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Address:</p>
+          <p class="text-lg">{{ user.address }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Phone:</p>
+          <p class="text-lg">{{ user.phone }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Date of Birth:</p>
+          <p class="text-lg">{{ user.dateOfBirth | date: 'mediumDate' }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Gender:</p>
+          <p class="text-lg">{{ user.gender }}</p>
+        </div>
+        <div>
+          <p class="text-gray-600 font-semibold">Role:</p>
+          <p class="text-lg">{{ user.role }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

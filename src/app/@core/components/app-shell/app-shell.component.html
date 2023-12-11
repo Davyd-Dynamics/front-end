@@ -3,6 +3,10 @@
     <mat-icon>menu</mat-icon>
   </button>
   <h1 >CareWatch</h1>
+  <div class="spacer"></div>
+  <a routerLink="/profile" mat-icon-button aria-label="Profile icon">
+    <mat-icon>account_circle</mat-icon>
+  </a>
 </mat-toolbar>
 <mat-sidenav-container autosize>
   <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile">
