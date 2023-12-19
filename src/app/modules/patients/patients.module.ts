@@ -11,7 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatLineModule} from "@angular/material/core";
 import {MatExpansionModule} from "@angular/material/expansion";
-import { ConfirmDeleteModalComponent } from './components/confirm-delete-modal/confirm-delete-modal.component';
+import { ConfirmDeleteModalComponent } from '../../@shared/components/confirm-delete-modal/confirm-delete-modal.component';
 import {EditPatientComponent} from "./pages/patient-edit/patient-edit.component";
 import {FormsModule} from "@angular/forms";
 
@@ -20,7 +20,6 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     PatientDetailsComponent,
     PatientListComponent,
-    ConfirmDeleteModalComponent,
     EditPatientComponent
   ],
   imports: [

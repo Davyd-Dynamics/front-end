@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PatientService} from "../../../../@core/services/patients.service";
 import {Patient} from "../../../../models/patient/patient";
 import {Router} from "@angular/router";
-import {ConfirmDeleteModalComponent} from "../../components/confirm-delete-modal/confirm-delete-modal.component";
+import {ConfirmDeleteModalComponent} from "../../../../@shared/components/confirm-delete-modal/confirm-delete-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({

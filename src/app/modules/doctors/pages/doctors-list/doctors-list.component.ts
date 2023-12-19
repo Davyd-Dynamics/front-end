@@ -22,7 +22,7 @@ export class DoctorsListComponent implements OnInit {
   }
 
   loadDoctors(): void {
-    this.doctorService.getAllDoctors(this.currentPage, this.pageSize).subscribe(
+    this.doctorService.getAll(this.currentPage, this.pageSize).subscribe(
       (doctors: Doctor[]) => {
         console.log(doctors);
         this.doctors = doctors;

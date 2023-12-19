@@ -16,6 +16,12 @@
         <button mat-icon-button (click)="openMedicalHistoryDetails(element.id)">
           <mat-icon>visibility</mat-icon>
         </button>
+        <button mat-icon-button  (click)="deleteMedicalHistoryConfirmation(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button  (click)="editMedicalHistory(element.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
       </td>
     </ng-container>
 

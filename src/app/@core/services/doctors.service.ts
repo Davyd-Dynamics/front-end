@@ -11,7 +11,7 @@ export class DoctorsService {
 
   constructor(private http: HttpClient) {}
 
-  getAllDoctors(pageNumber: number = 1, pageSize: number = 10): Observable<Doctor[]> {
+  getAll(pageNumber: number = 1, pageSize: number = 10): Observable<Doctor[]> {
     const params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString());

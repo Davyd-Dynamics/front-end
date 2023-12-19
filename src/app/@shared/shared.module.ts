@@ -5,11 +5,12 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
+import {ConfirmDeleteModalComponent} from "./components/confirm-delete-modal/confirm-delete-modal.component";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ConfirmDeleteModalComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -24,7 +25,8 @@ import {MatCardModule} from "@angular/material/card";
     MatPaginatorModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    ConfirmDeleteModalComponent
   ]
 })
 export class SharedModule { }

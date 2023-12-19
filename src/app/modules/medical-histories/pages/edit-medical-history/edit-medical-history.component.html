@@ -1,0 +1,55 @@
+<!-- edit-medical-history.component.html -->
+
+<div *ngIf="isLoading" class="flex items-center justify-center h-screen">
+  <div>Loading...</div>
+</div>
+
+<div *ngIf="medicalHistory" class="flex items-center justify-center gap-2 h-screen">
+  <div class="max-w-lg rounded overflow-hidden shadow-lg border p-6">
+    <h2 class="text-2xl font-bold mb-2">Edit: {{ medicalHistory.patient.name }}'s Medical History</h2>
+
+    <!-- Form for editing medical history -->
+    <form (ngSubmit)="onSubmit()" class="space-y-4">
+      <!-- Patient Search -->
+      <div class="grid grid-cols-2 gap-4">
+        <mat-form-field>
+          <input matInput placeholder="Search for a patient" [matAutocomplete]="auto" (input)="filterPatients($event)">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onPatientSelected($event)">
+            <mat-option *ngFor="let patient of filteredPatients" [value]="patient.id">
+              {{ patient.name }} (ID: {{ patient.id }})
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <!-- Doctor Search -->
+        <mat-form-field>
+          <input matInput  placeholder="Search for a doctor" [matAutocomplete]="autoDoctor" (input)="filterDoctors($event)">
+          <mat-autocomplete #autoDoctor="matAutocomplete" (optionSelected)="onDoctorSelected($event)">
+            <mat-option *ngFor="let doctor of filteredDoctors" [value]="doctor.id">
+              {{ doctor.name }} (ID: {{ doctor.id }})
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+
+      <!-- Information about the disease and treatment -->
+      <div>
+        <h3 class="text-xl font-semibold mb-2">Medical History Information</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <label for="disease">Disease</label>
+          <input id="disease" type="text" [(ngModel)]="medicalHistory.disease" name="disease">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <label for="treatment">Treatment</label>
+          <textarea id="treatment" [(ngModel)]="medicalHistory.treatment" name="treatment"></textarea>
+        </div>
+        <!-- Add other fields for editing medical history as needed -->
+      </div>
+
+      <!-- Button to save changes -->
+      <div class="mt-6">
+        <button type="submit" mat-raised-button color="primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
