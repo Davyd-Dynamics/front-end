@@ -23,13 +23,13 @@ export class AuthGuard implements CanActivate {
 
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) {
-      this.router.navigate(['auth/login']);
+      this.router.navigate(['auth']);
       return false;
     }
 
     const isRefreshSuccess = await this.authService.tryRefreshingTokens(token!, refreshToken);
     if (!isRefreshSuccess) {
-      this.router.navigate(['auth/login']);
+      this.router.navigate(['auth']);
     }
 
     return isRefreshSuccess;

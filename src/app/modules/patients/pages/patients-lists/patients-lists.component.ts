@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PatientService} from "../../../../@core/services/patients.service";
 import {Patient} from "../../../../models/patient/patient";
 import {Router} from "@angular/router";
+import {ConfirmDeleteModalComponent} from "../../components/confirm-delete-modal/confirm-delete-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-patient-list',
@@ -15,7 +17,7 @@ export class PatientListComponent implements OnInit {
   public pageSize = 10;
   public currentPage = 1;
 
-  constructor(private patientService: PatientService, private router: Router) {}
+  constructor(private patientService: PatientService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadPatients();
@@ -29,6 +31,33 @@ export class PatientListComponent implements OnInit {
         this.totalRecords = patients.length;
       }
     );
+  }
+
+  deletePatient(patientId: string): void {
+    this.patientService.deletePatient(patientId).subscribe(
+      () => {
+        // Видалення успішне, оновіть список пацієнтів
+        this.loadPatients();
+      },
+      (error) => {
+        // Обробка помилки видалення, можна показати повідомлення про помилку
+        console.error('Помилка видалення пацієнта:', error);
+      }
+    );
+  }
+
+
+  public deletePatientConfirmation(patientId: string): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Якщо користувач підтвердив видалення, виконайте логіку видалення
+        this.deletePatient(patientId);
+      }
+    });
   }
 
   openPatientDetails(patientId: string): void {

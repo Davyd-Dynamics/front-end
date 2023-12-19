@@ -1,0 +1,70 @@
+<div>
+  <div *ngIf="isLoading" class="flex items-center justify-center h-screen">
+    <div>Loading...</div>
+  </div>
+
+  <div *ngIf="patient" class="flex items-center justify-center gap-2 h-screen">
+    <div class="max-w-md rounded overflow-hidden shadow-lg border p-6">
+      <h2 class="text-2xl font-bold mb-2">Edit: {{ patient.contact.firstName }}</h2>
+
+      <!-- Форма для редагування даних користувача -->
+      <form>
+        <!-- Інформація про контакт -->
+        <div class="mt-4 border-t pt-4">
+          <h3 class="text-xl font-semibold mb-2">Contact Information</h3>
+          <div class="mb-2">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" [(ngModel)]="patient.contact.firstName" name="firstName">
+          </div>
+          <div class="mb-2">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" [(ngModel)]="patient.contact.lastName" name="lastName">
+          </div>
+          <div class="mb-2">
+            <label for="middleName">Middle Name</label>
+            <input id="middleName" type="text" [(ngModel)]="patient.contact.middleName" name="middleName">
+          </div>
+          <div class="mb-2">
+            <label for="email">Email</label>
+            <input id="email" type="email" [(ngModel)]="patient.contact.email" name="email">
+          </div>
+          <div class="mb-2">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" [(ngModel)]="patient.contact.phone" name="phone">
+          </div>
+          <div class="mb-2">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input id="dateOfBirth" type="date" [(ngModel)]="patient.contact.dateOfBirth" name="dateOfBirth">
+          </div>
+          <div class="mb-2">
+            <label for="gender">Gender</label>
+            <select id="gender" [(ngModel)]="patient.contact.gender" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="address">Address</label>
+            <textarea id="address" [(ngModel)]="patient.contact.address" name="address"></textarea>
+          </div>
+        </div>
+
+        <!-- Інформація про пацієнта -->
+        <div class="mt-4 border-t pt-4">
+          <h3 class="text-xl font-semibold mb-2">Patient Information</h3>
+          <div class="mb-2">
+            <label for="medicalRecordNumber">Medical Record Number</label>
+            <input id="medicalRecordNumber" type="text" [(ngModel)]="patient.medicalRecordNumber" name="medicalRecordNumber">
+          </div>
+          <!-- Додайте інші поля для редагування інформації про пацієнта, які у вас є -->
+        </div>
+
+        <!-- Кнопка збереження змін -->
+        <div class="mt-6">
+          <button mat-raised-button color="primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

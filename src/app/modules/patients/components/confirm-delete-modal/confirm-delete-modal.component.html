@@ -1,0 +1,13 @@
+<!-- confirm-delete-modal.component.html -->
+<div class="w-full max-w-sm mx-auto">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-xl font-bold mb-4">Confirm Delete</h2>
+    <div class="mb-4">
+      <p class="text-sm">Are you sure you want to delete?</p>
+    </div>
+    <div class="flex items-center justify-end">
+      <button mat-raised-button class="mr-2" (click)="confirmDelete()">Confirm</button>
+      <button mat-button (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
+</div>

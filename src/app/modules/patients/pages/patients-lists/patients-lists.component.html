@@ -11,7 +11,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button (click)="openPatientDetails(element.id)"><mat-icon>visibility</mat-icon></button>
+        <button mat-icon-button (click)="openPatientDetails(element.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button  (click)="deletePatientConfirmation(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </ng-container>
 
