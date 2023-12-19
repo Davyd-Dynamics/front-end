@@ -3,12 +3,12 @@ import {Patient} from "../../../../models/patient/patient";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {PatientService} from "../../../../@core/services/patients.service";
+import {tap} from "rxjs";
 
 
 @Component({
   selector: 'app-edit-patient',
-  templateUrl: './patient-edit.component.html',
-  styleUrls: ['./edit-patient.component.scss']
+  templateUrl: './edit-patient.component.html',
 })
 export class EditPatientComponent implements OnInit {
   public patient: Patient | undefined;
@@ -41,17 +41,13 @@ export class EditPatientComponent implements OnInit {
   }
 
   loadPatientDetails(): void {
-    const id = this.route.snapshot.paramMap.get('id'); // Assuming 'id' is the route parameter for patient ID
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.patientService.getPatientById(id).subscribe(
+      this.patientService.getById(id).subscribe(
         (patient: Patient) => {
           this.patient = patient;
           this.isLoading = false;
-          this.patientForm.patchValue({
-            contact: patient.contact,
-            medicalRecordNumber: patient.medicalRecordNumber
-            // Застосуйте тут інші значення для полів пацієнта
-          });
+          this.patchFormValues(patient);
         },
         (error) => {
           // Handle error
@@ -61,22 +57,24 @@ export class EditPatientComponent implements OnInit {
     }
   }
 
+  private patchFormValues(patient: Patient): void {
+    this.patientForm.patchValue({
+      contact: patient.contact,
+      medicalRecordNumber: patient.medicalRecordNumber
+      // Patch other form fields as needed
+    });
+  }
+
   onSubmit(): void {
     if (this.patientForm.valid) {
-      const editedPatient: Patient = {
-        ...this.patient,
-        ...this.patientForm.value
-      };
+      // Update the 'patient' object with the new form values
+      this.patient = { ...this.patient, ...this.patientForm.value };
+      const localDateOfBirth = new Date(this.patient!.contact.dateOfBirth);
+      const utcDateOfBirth = new Date(localDateOfBirth.toISOString());
+      this.patient!.contact.dateOfBirth = new Date(utcDateOfBirth.toISOString());
 
-      // Викличте метод сервісу для оновлення пацієнта
-      // this.patientService.updatePatient(editedPatient).subscribe(
-      //   (result) => {
-      //     // Дії після успішного оновлення
-      //   },
-      //   (error) => {
-      //     // Обробка помилок
-      //   }
-      // );
+      this.patientService.update(this.patient!).pipe(
+      ).subscribe();
     }
   }
 }

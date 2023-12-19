@@ -11,7 +11,7 @@ export class PatientService {
 
   constructor(private http: HttpClient) {}
 
-  getAllPatients(pageNumber: number = 1, pageSize: number = 10): Observable<Patient[]> {
+  getAll(pageNumber: number = 1, pageSize: number = 10): Observable<Patient[]> {
     const params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString());
@@ -19,15 +19,19 @@ export class PatientService {
     return this.http.get<Patient[]>(this.apiUrl, { params });
   }
 
-  getPatientById(id: string): Observable<Patient> {
+  getById(id: string): Observable<Patient> {
     return this.http.get<Patient>(`${this.apiUrl}/${id}`);
   }
 
-  createPatient(patientData: any): Observable<Patient> {
+  create(patientData: any): Observable<Patient> {
     return this.http.post<Patient>(this.apiUrl, patientData);
   }
 
-  deletePatient(id: string): Observable<any> {
+  update(patientData: Patient): Observable<Patient> {
+    return this.http.put<Patient>(`${this.apiUrl}/${patientData.id}`, patientData);
+  }
+
+  delete(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

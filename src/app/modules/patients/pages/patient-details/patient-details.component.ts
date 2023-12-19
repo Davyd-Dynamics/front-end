@@ -25,7 +25,7 @@ export class PatientDetailsComponent {
     const id = this.route.snapshot.paramMap.get('id'); // Assuming 'id' is the route parameter for patient ID
     console.log(id)
     if (id) {
-      this.patientService.getPatientById(id).subscribe(
+      this.patientService.getById(id).subscribe(
         (patient: Patient) => {
           this.patient = patient;
           this.isLoading = false;

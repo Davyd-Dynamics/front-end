@@ -15,7 +15,7 @@
         <p>Middle Name: {{ patient.contact.middleName }}</p>
         <p>Email: {{ patient.contact.email }}</p>
         <p>Phone: {{ patient.contact.phone }}</p>
-        <p>Date of Birth: {{ patient.contact.dateOfBirth }}</p>
+        <p>Date of Birth: {{ patient.contact.dateOfBirth | date:'fullDate' }} </p>
         <p>Gender: {{ patient.contact.gender }}</p>
         <p>Address: {{ patient.contact.address }}</p>
       </div>

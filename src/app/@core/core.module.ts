@@ -10,6 +10,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import { AppShellComponent } from './components/app-shell/app-shell.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { AppHomeComponent } from './components/app-home/app-home.component';
 
 
 
@@ -17,6 +18,7 @@ import {MatDialogModule} from "@angular/material/dialog";
   declarations: [
     EmergencyRequestModalComponent,
     AppShellComponent,
+    AppHomeComponent,
   ],
   imports: [
     CommonModule,

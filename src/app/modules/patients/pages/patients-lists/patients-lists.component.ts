@@ -24,7 +24,7 @@ export class PatientListComponent implements OnInit {
   }
 
   loadPatients(): void {
-    this.patientService.getAllPatients(this.currentPage, this.pageSize).subscribe(
+    this.patientService.getAll(this.currentPage, this.pageSize).subscribe(
       (patients: Patient[]) => {
         console.log(patients)
         this.patients = patients;
@@ -34,7 +34,7 @@ export class PatientListComponent implements OnInit {
   }
 
   deletePatient(patientId: string): void {
-    this.patientService.deletePatient(patientId).subscribe(
+    this.patientService.delete(patientId).subscribe(
       () => {
         // Видалення успішне, оновіть список пацієнтів
         this.loadPatients();
@@ -68,5 +68,9 @@ export class PatientListComponent implements OnInit {
   onPageChange(page: number): void {
     this.currentPage = page;
     this.loadPatients();
+  }
+
+  editPatientConfirmation(patientId: string) {
+    this.router.navigate(['patients', patientId, 'edit']);
   }
 }
