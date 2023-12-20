@@ -73,4 +73,9 @@ export class PatientListComponent implements OnInit {
   editPatientConfirmation(patientId: string) {
     this.router.navigate(['patients', patientId, 'edit']);
   }
+
+  createNewPatient(): void {
+    // Assuming 'patients/create' is the route for creating a new patient
+    this.router.navigate(['patients/create']);
+  }
 }

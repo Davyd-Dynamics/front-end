@@ -16,7 +16,7 @@ export class DoctorsDetailsComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const doctorId = params['id']; // Get doctor ID from route
-      this.doctorsService.getDoctorById(doctorId).subscribe((doctor: Doctor) => {
+      this.doctorsService.getById(doctorId).subscribe((doctor: Doctor) => {
         this.doctor = doctor; // Fetch doctor data
       });
     });

@@ -1,6 +1,7 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="patients" class="mat-elevation-z8">
 
+
     <!-- Define columns -->
     <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
       <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
@@ -28,6 +29,11 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions');"></tr>
   </table>
 </div>
+
+<button mat-raised-button color="primary" class="create-button" (click)="createNewPatient()">
+  Create New Patient
+</button>
+
 <mat-paginator
   [length]="totalRecords"
   [pageSize]="pageSize"

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Doctor } from "../../../../models/doctor/doctor";
 import { Router } from "@angular/router";
 import {DoctorsService} from "../../../../@core/services/doctors.service";
+import {
+  ConfirmDeleteModalComponent
+} from "../../../../@shared/components/confirm-delete-modal/confirm-delete-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-doctors-list',
@@ -15,7 +19,9 @@ export class DoctorsListComponent implements OnInit {
   public pageSize = 10;
   public currentPage = 1;
 
-  constructor(private doctorService: DoctorsService, private router: Router) {}
+  constructor(private doctorService: DoctorsService,
+              private router: Router,
+              private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadDoctors();
@@ -39,5 +45,33 @@ export class DoctorsListComponent implements OnInit {
   onPageChange(page: number): void {
     this.currentPage = page;
     this.loadDoctors();
+  }
+
+  editDoctorConfirmation(doctorId: string): void {
+    this.router.navigate(['doctors', doctorId, 'edit']);
+  }
+
+  deleteDoctor(doctorId: string): void {
+    this.doctorService.delete(doctorId).subscribe(
+      () => {
+        this.loadDoctors();
+      },
+      (error) => {
+        console.error('Помилка видалення лікарів:', error);
+      }
+    );
+  }
+
+  public deleteDoctorConfirmation(patientId: string): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Якщо користувач підтвердив видалення, виконайте логіку видалення
+        this.deleteDoctor(patientId);
+      }
+    });
   }
 }

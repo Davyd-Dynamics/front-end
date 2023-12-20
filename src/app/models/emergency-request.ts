@@ -1,12 +1,13 @@
 import {Patient} from "./patient/patient";
 import {Doctor} from "./doctor/doctor";
+import {BaseLookupEntity} from "./base-lookup-entity";
 
 export interface EmergencyRequest {
   id: string;
   patientId: string;
-  patient: Patient;
+  patient: BaseLookupEntity;
   acceptedDoctorId: string;
-  acceptedDoctor: Doctor;
+  acceptedDoctor: BaseLookupEntity;
   location: string;
   status: string;
   type: string;

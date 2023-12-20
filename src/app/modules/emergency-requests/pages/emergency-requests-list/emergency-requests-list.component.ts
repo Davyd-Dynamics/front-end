@@ -8,7 +8,7 @@ import {EmergencyRequestsService} from "../../../../@core/services/emergency-req
   templateUrl: './emergency-requests-list.component.html',
 })
 export class EmergencyRequestListComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'patientId', 'location', 'status', 'type'];
+  public displayedColumns: string[] = ['id', 'location', 'status', 'type', 'patient.name'];
   public emergencyRequests: EmergencyRequest[] = [];
   public totalRecords: number = this.emergencyRequests.length;
   public pageSize = 10;

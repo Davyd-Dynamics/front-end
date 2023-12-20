@@ -1,0 +1,25 @@
+/* Add this to your component's CSS file */
+.emergency-request-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-type,
+.status,
+.location {
+  flex: 1;
+}
+
+.no-requests {
+  text-align: center;
+  margin: 16px;
+  color: #757575;
+}
+
+/* Add this to your component's CSS file */
+.no-records {
+  text-align: center;
+  margin: 16px;
+  color: #757575;
+}

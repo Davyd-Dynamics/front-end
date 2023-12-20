@@ -9,12 +9,21 @@ import {DoctorsListComponent} from "./pages/doctors-list/doctors-list.component"
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
+import { EditDoctorComponent } from './pages/edit-doctor/edit-doctor.component';
+import {MatButtonModule} from "@angular/material/button";
+import {SharedModule} from "../../@shared/shared.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
   declarations: [
     DoctorsListComponent,
-    DoctorsDetailsComponent
+    DoctorsDetailsComponent,
+    EditDoctorComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +32,15 @@ import {MatIconModule} from "@angular/material/icon";
     MatCardModule,
     MatPaginatorModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    SharedModule,
+    MatNativeDateModule,
+    FormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatExpansionModule
   ]
 })
 export class DoctorsModule { }
