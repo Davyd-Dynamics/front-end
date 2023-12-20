@@ -1,0 +1,78 @@
+<!-- edit-doctor.component.html -->
+
+<div *ngIf="isLoading" class="flex items-center justify-center h-screen">
+  <div>Loading...</div>
+</div>
+
+<div *ngIf="doctor" class="flex items-center justify-center gap-2 h-screen">
+  <div class="max-w-lg rounded overflow-hidden shadow-lg border p-6">
+    <h2 class="text-2xl font-bold mb-2">Edit: Dr. {{ doctor.contact.firstName }} {{ doctor.contact.lastName }}</h2>
+
+    <!-- Form for editing doctor -->
+    <form (ngSubmit)="onSubmit()" [formGroup]="doctorForm" class="space-y-4">
+      <!-- Doctor's Contact Information -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="First Name" formControlName="contact.firstName">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Last Name" formControlName="contact.lastName">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Middle Name" formControlName="contact.middleName">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Email" formControlName="contact.email">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Phone" formControlName="contact.phone">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Date of Birth" [matDatepicker]="picker" formControlName="contact.dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Gender" formControlName="contact.gender">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full">
+            <input matInput placeholder="Address" formControlName="contact.address">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Doctor's Speciality -->
+      <div>
+        <mat-form-field class="w-full">
+          <input matInput placeholder="Speciality" formControlName="speciality">
+        </mat-form-field>
+      </div>
+
+      <!-- Button to save changes -->
+      <div class="mt-6">
+        <button type="submit" mat-raised-button color="primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
